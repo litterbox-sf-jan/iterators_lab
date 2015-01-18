@@ -5,6 +5,9 @@ var Iterators = {
   // - tripler([7,50,4]) should return [21,150,12].
   // Use `map` to accomplish this.
   tripler: function (numbers) {
+    return numbers.map(function (num) {
+      return num * 3;
+    });
   },
 
   // perfectSquares() should take an array of numbers as a parameter
@@ -15,6 +18,10 @@ var Iterators = {
   // - perfectSquares([1,4,9]) should return [1,4,9].
   // Use `filter` to accomplish this.
   perfectSquares: function (numbers) {
+    return numbers.filter(function (num) {
+      var sqrt = Math.sqrt(num);
+      return sqrt == Math.round(sqrt);
+    });
   },
 
   // product() should accept an array of numbers as a parameter
@@ -25,6 +32,9 @@ var Iterators = {
   // - product([100,200,300]) should return 6000000.
   // Use `reduce` to accomplish this.
   product: function (numbers) {
+    return numbers.reduce(function (previous, current) {
+      return previous * current;
+    });
   },
 
   // hasInstructor() accepts an array of names and should return true
@@ -38,6 +48,10 @@ var Iterators = {
   // Use `some` to accomplish this.
   // Hint: see `toLowerCase` could be useful.
   hasInstructor: function (names) {
+    return names.some(function (person) {
+      person = person.toLowerCase();
+      return person == "tim" || person == "alex" || person == "elie";
+    });
   },
 
   // allSamePlayer() should accept an array of players, represented by
@@ -52,6 +66,13 @@ var Iterators = {
   // - allSamePlayer(["_","_","_"]) should return false.
   // Use `every` to accomplish this.
   allSamePlayer: function (players) {
+    var first = players[0];
+    if (first !== "X" && first !== "O") {
+      return false;
+    }
+    return players.every(function (character) {
+      return character === first;
+    });
   },
 
   // This is NOT an iterator method, but it's interesting
@@ -66,6 +87,12 @@ var Iterators = {
   // - remove([], 17) should return [],
   // - remove([1,1,2,3], 1) should return [2,3]
   remove: function (list, item) {
+    var found = list.indexOf(item);
+    while (found !== -1) {
+      list.splice(found, 1);
+      found = list.indexOf(item, found);
+    }
+    return list;
   },
 
   // Also not an iterator metheod, necessarily. devowel() takes a
@@ -81,6 +108,15 @@ var Iterators = {
   // - devowel("Howdy") should return "Hwdy",
   // - devowel("Phone's ringing, dude.") should return "Phn's rngng, dd.".
   devowel: function (text) {
+
+    // Solution using a Regular Expression.
+    // return text.replace(/[aeiou]/g, "");
+
+    // Solution using .split(), .join(), and .filter().
+    var vowels = ["a", "e", "i", "o", "u"];
+    return text.split("").filter(function (character) {
+      return vowels.indexOf(character) === -1;
+    }).join("");
   }
 };
 
