@@ -1,6 +1,6 @@
 var Iterators = {
   // tripler() should accept an array of numbers as a parameter and
-  // return an array of the triples of those numbers. For example,
+  // return an array of those numbers multipled by 3. For example,
   // - tripler([1,2,3]) should return [3,6,9], and
   // - tripler([7,50,4]) should return [21,150,12].
   // Use `map` to accomplish this.
@@ -12,7 +12,8 @@ var Iterators = {
 
   // perfectSquares() should take an array of numbers as a parameter
   // and return an array that contains only the numbers from the
-  // argument that are perfect squares. For example,
+  // argument that have whole numbers as their square roots. For
+  // example,
   // - perfectSquares([1,2,3]) should return [1], and
   // - perfectSquares([4,5,6]) should return [4], and
   // - perfectSquares([1,4,9]) should return [1,4,9].
@@ -46,7 +47,7 @@ var Iterators = {
   // - hasInstructor(["bob", "tim", "jen"]) should return true,
   // - hasInstructor(["Bob", "Tim", "Jen"]) should return true.
   // Use `some` to accomplish this.
-  // Hint: see `toLowerCase` could be useful.
+  // Hint: see `toLowerCase`, it could be useful.
   hasInstructor: function (names) {
     return names.some(function (person) {
       person = person.toLowerCase();
@@ -73,26 +74,6 @@ var Iterators = {
     return players.every(function (character) {
       return character === first;
     });
-  },
-
-  // This is NOT an iterator method, but it's interesting
-  // nonetheless. remove() takes an array and an item and removes all
-  // instances of the item from the array. JavaScript provides an
-  // `indexOf` method that finds the position of the item in an
-  // array. It also provides a `splice` method that is able to remove
-  // an item from an array. Combine these two to create remove(). For
-  // example,
-  // - remove([1,2,3], 2) should return [1,3],
-  // - remove([1,2,3], 4) should return [1,2,3],
-  // - remove([], 17) should return [],
-  // - remove([1,1,2,3], 1) should return [2,3]
-  remove: function (list, item) {
-    var found = list.indexOf(item);
-    while (found !== -1) {
-      list.splice(found, 1);
-      found = list.indexOf(item, found);
-    }
-    return list;
   },
 
   // Also not an iterator metheod, necessarily. devowel() takes a
